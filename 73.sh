@@ -41,14 +41,14 @@ CURRENT=$(grep version ${BAPDIR}/changelog | head -1 | sed 's/version=//')
 
 if (($(echo "${LATEST} ${CURRENT}" | awk '{print ($1 > $2)}'))); then
 	echo "#################################"
-	echo "Nueva version de 73 Linux disponible"
+	echo "Nueva version de 73 Linux mod CE3AA disponible"
 	echo "Version actual es $CURRENT"
 	echo "Ultima version $LATEST"
 	echo "############################"
 	yad --width=300 --height=150 --fixed --text-align=center --center --title="73 Linux" \
 		--image ${LOGO} --window-icon=${LOGO} --image-on-top --separator="|" --item-separator="|" \
-		--text "Updated version of 73 Linux found.\rInstalled - v${CURRENT}\rLatest - v${LATEST}\rWould you like to update?" \
-		--button="Yes":2 \
+		--text "Se encontro una nueva version.\rInstalada - v${CURRENT}\rDisponible - v${LATEST}\rQuieres actualizar?" \
+		--button="Si":2 \
 		--button="No":3
 BUT=$?
 	if [ $BUT = 252 ]; then
@@ -59,7 +59,7 @@ BUT=$?
 			cd $HOME
 			rm -rf 73Linux
 			git clone https://github.com/km4ack/73Linux.git
-			yad --width=300 --height=150 --fixed --text-align=center --center --title="73 Linux" \
+			yad --width=300 --height=150 --fixed --text-align=center --center --title="73 Linux | CE3AA" \
 				--image ${LOGO} --window-icon=${LOGO} --image-on-top --separator="|" --item-separator="|" \
 				--text "Actualizacion completada.\rReinicie 73 Linux" \
 				--button=gtk-ok
@@ -72,7 +72,7 @@ BUT=$?
 	fi
 
 else
-	echo "73 Linux actualizado. Version $CURRENT instalada"
+	echo "73 Linux mod CE3AA actualizado. Version $CURRENT instalada"
 fi
 
 echo "Validando actualizaciones de archivos bap"
@@ -80,7 +80,7 @@ CUR=$(grep version ${BAPDIR}/app/.bap-version | sed 's/version=//')
 LATEST=$(curl -s https://raw.githubusercontent.com/km4ack/73Linux/master/app/.bap-version | grep version | head -1 | sed 's/version=//')
 if (($(echo "${LATEST} ${CUR}" | awk '{print ($1 > $2)}'))); then
 	echo "#######################################"
-	echo "#    Downloading latest bap files     #"
+	echo "#    Descargando archivos bap  	    #"
 	echo "#######################################"
 	cd /run/user/$UID
 	git init 73Linux
@@ -93,18 +93,18 @@ if (($(echo "${LATEST} ${CUR}" | awk '{print ($1 > $2)}'))); then
 	cp -r /run/user/$UID/73Linux/app ${BAPDIR}/
 	rm -rf /run/user/$UID/73Linux
 else
-	echo "bap files up to date"
+	echo "Archivos bap actualizados"
 fi
 
 cd ${BAPDIR}
 
-echo "#######################################"
-echo "#  Updating repository & verifying    #"
-echo "#  a few needed items needed before   #"
-echo "#  we begin.                          #"
-echo "#                                     #"
-echo "#  Enter your sudo password if asked  #"
-echo "#######################################"
+echo "##############################################"
+echo "#   Actualizando repositorio y verificando   #"
+echo "#      algunos programas necesarios para     #"
+echo "#                 comenzar                   #"
+echo "#                         	               #"
+echo "#    Ingresa tu contraseña si se solicita    #"
+echo "##############################################"
 sudo apt update
 if ! hash yad 2>/dev/null; then
 	sudo apt install -y yad
@@ -123,7 +123,7 @@ if ! hash git >/dev/null; then
 fi
 
 #####################################
-#	Verify not run as root
+#	Verificando permisos de root
 #####################################
 if [ `whoami` = 'root' ]; then
 	yad --form --width=500 --text-align=center --center --title="73 Linux" --text-align=center \
@@ -136,35 +136,35 @@ fi
 
 touch $HOME/.config/KM4ACK
 
-#first run? welcome!
+#Primera vez? Bienvenido
 if [ ! -f "$BAPSYSINFO" ]; then
     
-    # Detect if the script is part of a full source checkout or standalone instead.
+    # Detecta si el script es parte de un checkout de fuente de codigo o esta en una carpeta independiente.
     if [ ! -f "${BAPDIR}/app/stable/autohotspot" ]; then
         echo -e "\n Missing important stuff. Can't continue. "
         exit 1
     fi
 
-    #create source repo
+    #crea el repositorio de fuentes
     mkdir -p ${HOME}/.bap-source-files
 
-    #set the station call sign
-    N0CALL=$(yad --form --width=420 --text-align=center --title="73 Linux" --center \
-        --title="Amature Radio Callsign Required" --center --image="$LOGO" \
-        --field="Call Sign" \
-        --field="<b>Required</b>":LBL)
+    #Establecer indicativo de la estacion
+    N0CALL=$(yad --form --width=420 --text-align=center --title="73 Linux | CE3AA" --center \
+        --title="Indicativo de la estacion requerido" --center --image="$LOGO" \
+        --field="Indicativo" \
+        --field="<b>Requerido</b>":LBL)
 
     #input validate
     TMPCALL=$(echo "${N0CALL^^}" | sed 's/||//' | awk '{gsub(/[^[:alnum:][:space:]]/,"?")} 1')
 
     if echo "$TMPCALL" | grep -q "?";then
-        echo -e "\n ERROR: CRITICAL: valid call to operate (no SSID) $TMPCALL QRZ?"
+        echo -e "\n ERROR: CRITICO: Se requiere indicativo para operar (no SSID) $TMPCALL QRZ?"
         exit 1
     fi
 
     #blank check
     if [ $N0CALL = "||" ] || [ $N0CALL = "" ]; then
-        echo -e "\n ERROR: CRITICAL: need a radio call to operate, nothing heard QRZ?"
+        echo -e "\n ERROR: CRITICO: Se requiere indicativo para operar, QRZ?"
         exit 1
 
     else
@@ -173,33 +173,33 @@ if [ ! -f "$BAPSYSINFO" ]; then
         BAPCALL=$TMPCALL
         touch ${BAPDIR}/MYCALL.$MYCALL
         touch ${BAPDIR}/cache/MYCALL.$MYCALL
-        echo "###################################"
-        echo "#Registered $MYCALL to this host"
-        echo "###################################"
+        echo "##############################################"
+        echo "#Se registra indicativo $MYCALL a esta maquina"
+        echo "##############################################"
         wait
     fi
 
     # Setup the other CPU data we will need make it global for this session
     if [ -f ${BAPDIR}/bin/set-enviroment.sh ]; then
         echo "###################################"
-        echo "#Detected New System for Install"
+        echo "#Se detecto nuevo sistema operativo"
         echo "###################################"
         echo -e "Hostname - $(hostname -s)"
         ${BAPDIR}/bin/set-enviroment.sh
     else
-            echo -e "\n ERROR: CRITICAL: check integrity of package."
+            echo -e "\n ERROR: CRITICAL: Validar integridad de los archivos."
             exit 1
     fi
 
     # Show once dialog
     yad --form --width=420 --height=200 --fixed --center --title="Welcome ${MYCALL}!" --image="$LOGO"  \
-    --image-on-top --text-align=fill --button=gtk-ok --text="\n          <b>${MYCALL} DE KM4ACK!</b>\r        Welcome to\r
-                    <b>73 Linux</b>\n
-        Build a Pi on Steroids!\n
-            -A full build can take up to 4 hours!
-	    -Possibly more on a Pi 3
-	    -Press ok to scan the system
-	     and begin the build process"
+    --image-on-top --text-align=fill --button=gtk-ok --text="\n          <b>${MYCALL} DE CE3AA!</b>\r        Bienvenido a\r
+                    <b>73 Linux | CE3AA</b>\n
+        Creado para los radioaficionados Chilenos!\n
+            -Ina instalacion completa puede tardar hasta 4 horas!
+	    -Incluso mas en una raspberry pi 3
+	    -Presiona ok para escanear el sistema
+	     y comenzar la instalacion."
 
     #fi first run, wait
     wait
