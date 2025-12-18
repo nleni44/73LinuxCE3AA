@@ -6,15 +6,17 @@
 # Forcing to use the default locale prevents any of those localization issues.
 export LC_ALL=C
 
-echo "#######################################"
-echo "#        Welcome to 73 Linux          #"
-echo "#######################################"
+echo "#########################################"
+echo "#        Bienvenido a 73 Linux          #"
+echo "#  Proyecto modificado para socios del  #"
+echo "#      Radio Club de Chile CE3AA		  #"
+echo "#########################################"
 
 #variables
 BAPDIR="$(cd "$(dirname "$0")" && pwd)"
 BAPSYSINFO=${BAPDIR}/cache/cpu.bap
 BAPPVER=$(cat ${BAPDIR}/changelog | head -1 | sed 's/version=//')
-LOGO=${BAPDIR}/data/logo.png
+LOGO=${BAPDIR}/data/logo-aa.png
 TEMPCRON=/run/user/$UID/tempcron.txt
 
 
@@ -31,17 +33,17 @@ if [ ! -d ${BAPDIR}/cache ]; then
 	mkdir ${BAPDIR}/cache
 fi
 
-echo "#############################"
-echo "Checking for 73 Linux Updates"
-echo "#############################"
+echo "############################"
+echo "Validando actualizaciones..."
+echo "############################"	
 LATEST=$(curl -s https://raw.githubusercontent.com/km4ack/73Linux/master/changelog | head -1 | sed 's/version=//')
 CURRENT=$(grep version ${BAPDIR}/changelog | head -1 | sed 's/version=//')
 
 if (($(echo "${LATEST} ${CURRENT}" | awk '{print ($1 > $2)}'))); then
 	echo "#################################"
-	echo "A newer version of 73 Linux Found"
-	echo "Current version is $CURRENT"
-	echo "Latest version is $LATEST"
+	echo "Nueva version de 73 Linux disponible"
+	echo "Version actual es $CURRENT"
+	echo "Ultima version $LATEST"
 	echo "############################"
 	yad --width=300 --height=150 --fixed --text-align=center --center --title="73 Linux" \
 		--image ${LOGO} --window-icon=${LOGO} --image-on-top --separator="|" --item-separator="|" \
@@ -59,21 +61,21 @@ BUT=$?
 			git clone https://github.com/km4ack/73Linux.git
 			yad --width=300 --height=150 --fixed --text-align=center --center --title="73 Linux" \
 				--image ${LOGO} --window-icon=${LOGO} --image-on-top --separator="|" --item-separator="|" \
-				--text "Update complete.\rPlease restart 73 Linux" \
+				--text "Actualizacion completada.\rReinicie 73 Linux" \
 				--button=gtk-ok
 		exit
 		else
-			yad --center --timeout=3 --timeout-indicator=top --no-buttons --text="You are not connected to the internet"
+			yad --center --timeout=3 --timeout-indicator=top --no-buttons --text="Sin conexion a internet"
 			exit
 		fi
 
 	fi
 
 else
-	echo "73 Linux up to date. Version $CURRENT installed"
+	echo "73 Linux actualizado. Version $CURRENT instalada"
 fi
 
-echo "Checking for updated bap files"
+echo "Validando actualizaciones de archivos bap"
 CUR=$(grep version ${BAPDIR}/app/.bap-version | sed 's/version=//')
 LATEST=$(curl -s https://raw.githubusercontent.com/km4ack/73Linux/master/app/.bap-version | grep version | head -1 | sed 's/version=//')
 if (($(echo "${LATEST} ${CUR}" | awk '{print ($1 > $2)}'))); then
