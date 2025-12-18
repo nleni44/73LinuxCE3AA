@@ -16,7 +16,7 @@ echo "#########################################"
 BAPDIR="$(cd "$(dirname "$0")" && pwd)"
 BAPSYSINFO=${BAPDIR}/cache/cpu.bap
 BAPPVER=$(cat ${BAPDIR}/changelog | head -1 | sed 's/version=//')
-LOGO=${BAPDIR}/data/logo-aa.png
+LOGO=${BAPDIR}/data/logo.png
 TEMPCRON=/run/user/$UID/tempcron.txt
 
 
@@ -45,7 +45,7 @@ if (($(echo "${LATEST} ${CURRENT}" | awk '{print ($1 > $2)}'))); then
 	echo "Version actual es $CURRENT"
 	echo "Ultima version $LATEST"
 	echo "############################"
-	yad --width=300 --height=150 --fixed --text-align=center --center --title="73 Linux" \
+	yad --width=300 --height=150 --fixed --text-align=center --center --title="73 Linux | CE3AA" \
 		--image ${LOGO} --window-icon=${LOGO} --image-on-top --separator="|" --item-separator="|" \
 		--text "Se encontro una nueva version.\rInstalada - v${CURRENT}\rDisponible - v${LATEST}\rQuieres actualizar?" \
 		--button="Si":2 \
