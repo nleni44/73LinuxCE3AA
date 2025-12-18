@@ -6,11 +6,12 @@
 # Forcing to use the default locale prevents any of those localization issues.
 export LC_ALL=C
 
-echo "#########################################"
-echo "#        Bienvenido a 73 Linux          #"
-echo "#  Proyecto modificado para socios del  #"
-echo "#      Radio Club de Chile CE3AA		  #"
-echo "#########################################"
+echo "#####################################################"
+echo "#          Bienvenido a 73 Linux | CE3AA  		  #"
+echo "#  Proyecto adaptado por el Radio Club de Chile	  #"
+echo "#    	  para los radioaficionados Chilenos!  		  #"
+echo "#       Proyecto original creado por KM4ACK	  	  #"
+echo "#####################################################"
 
 #variables
 BAPDIR="$(cd "$(dirname "$0")" && pwd)"
@@ -72,7 +73,7 @@ BUT=$?
 	fi
 
 else
-	echo "73 Linux mod CE3AA actualizado. Version $CURRENT instalada"
+	echo "73 Linux | CE3AA actualizado. Version $CURRENT instalada"
 fi
 
 echo "Validando actualizaciones de archivos bap"
@@ -102,7 +103,7 @@ echo "##############################################"
 echo "#   Actualizando repositorio y verificando   #"
 echo "#      algunos programas necesarios para     #"
 echo "#                 comenzar                   #"
-echo "#                         	               #"
+echo "#                                            #"
 echo "#    Ingresa tu contraseña si se solicita    #"
 echo "##############################################"
 sudo apt update
@@ -150,9 +151,9 @@ if [ ! -f "$BAPSYSINFO" ]; then
 
     #Establecer indicativo de la estacion
     N0CALL=$(yad --form --width=420 --text-align=center --title="73 Linux | CE3AA" --center \
-        --title="Indicativo de la estacion requerido" --center --image="$LOGO" \
+        --title="Favor ingrese su indicativo" --center --image="$LOGO" \
         --field="Indicativo" \
-        --field="<b>Requerido</b>":LBL)
+        --field="<b>Obligatorio</b>":LBL)
 
     #input validate
     TMPCALL=$(echo "${N0CALL^^}" | sed 's/||//' | awk '{gsub(/[^[:alnum:][:space:]]/,"?")} 1')
@@ -195,10 +196,10 @@ if [ ! -f "$BAPSYSINFO" ]; then
     yad --form --width=420 --height=200 --fixed --center --title="Welcome ${MYCALL}!" --image="$LOGO"  \
     --image-on-top --text-align=fill --button=gtk-ok --text="\n          <b>${MYCALL} DE CE3AA!</b>\r        Bienvenido a\r
                     <b>73 Linux | CE3AA</b>\n
-        Creado para los radioaficionados Chilenos!\n
-            -Ina instalacion completa puede tardar hasta 4 horas!
-	    -Incluso mas en una raspberry pi 3
-	    -Presiona ok para escanear el sistema
+        Creado originalmente por KM4ACK, modificado para los radioaficionados Chilenos!\n
+            - Una instalacion completa puede tardar hasta 4 horas!
+	    - Incluso mas en una raspberry pi 3
+	    - Presiona ok para escanear el sistema
 	     y comenzar la instalacion."
 
     #fi first run, wait
