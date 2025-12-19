@@ -7,7 +7,7 @@ LOGO=$BAPDIR/data/logo.png
 export JOBFILE
 #clear;echo;echo
 echo "###################################"
-echo "#      Welcome $CALL 	"
+echo "#      Bienvenido $CALL 	"
 echo "###################################"
 
 #loops (f)iles for data to put into yad table with checkboxes. BAPP column is lost to checkbox.
@@ -39,7 +39,7 @@ APPIDLIST=$(cat $APPLIST | tr '\n' ' ' | cut -f1 -d"#")
 
 if [ -z "$APPIDLIST" ]; then
 	echo "######################################"
-	echo "#Nothing selected to install. Exiting 	"
+	echo "#No se selecciono ninguna app a instalar, saliendo."
 	echo "######################################"
 	sleep 2
 	exit 0

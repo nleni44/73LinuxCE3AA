@@ -96,49 +96,31 @@ BAP(){
 echo "Updating 73 Linux Shortcuts"
 cd /run/user/$UID
 
-#DONATE
-if [ ! -f /usr/local/share/applications/donate.desktop ]; then
-	cat >donate.desktop <<EOF
+#CE3AA
+if [ ! -f /usr/local/share/applications/ce3aa.desktop ]; then
+	cat >ce3aa.desktop <<EOF
 [Desktop Entry]
-Name=Donate
-Comment=Donate to Build a Pi
-Exec=xdg-open https://www.paypal.com/paypalme/km4ack
-Icon=${BAPDIR}/data/73.png
+Name=CE3AA
+Comment=Sitio web CE3AA
+Exec=xdg-open https://www.ce3aa.cl
+Icon=${BAPDIR}/data/logo.png
 Terminal=false
 Type=Application
 Categories=bap
 Keywords=Support
 EOF
 
-	sudo mv donate.desktop /usr/local/share/applications/
+	sudo mv ce3aa.desktop /usr/local/share/applications/
 fi
 
-#FAQ
-if [ ! -f /usr/local/share/applications/faq.desktop ]; then
-	cat >faq.desktop <<EOF
+#QRZ
+if [ ! -f /usr/local/share/applications/qrz.desktop ]; then
+	cat >qrz.desktop <<EOF
 [Desktop Entry]
-Name=FAQ
-Comment=Build a Pi FAQ
-Exec=xdg-open https://app.simplenote.com/publish/C3bBxN
-Icon=${BAPDIR}/data/73.png
-Terminal=false
-Type=Application
-Categories=bap
-Keywords=Support
-
-EOF
-
-	sudo mv faq.desktop /usr/local/share/applications/
-fi
-
-#SUPPORT
-if [ ! -f /usr/local/share/applications/support.desktop ]; then
-	cat >support.desktop <<EOF
-[Desktop Entry]
-Name=Tech Support
-Comment=Build a Pi Tech Support
-Exec=xdg-open https://groups.io/g/KM4ACK-Pi/topics
-Icon=${BAPDIR}/data/73.png
+Name=QRZ CE3AA
+Comment=Pagina QRZ de CE3AA
+Exec=xdg-open https://www.qrz.com/db/CE3AA
+Icon=${BAPDIR}/data/logo.png
 Terminal=false
 Type=Application
 Categories=bap
@@ -146,8 +128,63 @@ Keywords=Support
 
 EOF
 
-	sudo mv support.desktop /usr/local/share/applications/
+	sudo mv qrz.desktop /usr/local/share/applications/
 fi
+
+#SUBTEL
+if [ ! -f /usr/local/share/applications/subtel.desktop ]; then
+	cat >subtel.desktop <<EOF
+[Desktop Entry]
+Name=Subtel RA
+Comment=Pagina Subtel para Radioaficionados
+Exec=xdg-open https://subtel.gob.cl/RA
+Icon=${BAPDIR}/data/logo.png
+Terminal=false
+Type=Application
+Categories=bap
+Keywords=Support
+
+EOF
+
+	sudo mv subtel.desktop /usr/local/share/applications/
+fi
+
+#FACEBOOK
+if [ ! -f /usr/local/share/applications/facebook.desktop ]; then
+	cat >facebook.desktop <<EOF
+[Desktop Entry]
+Name=Facebook
+Comment=Facebook oficial CE3AA
+Exec=xdg-open https://www.facebook.com/ce3aa.oficial
+Icon=${BAPDIR}/data/logo.png
+Terminal=false
+Type=Application
+Categories=bap
+Keywords=Support
+
+EOF
+
+	sudo mv facebook.desktop /usr/local/share/applications/
+fi
+
+#LABS
+if [ ! -f /usr/local/share/applications/labs.desktop ]; then
+	cat >labs.desktop <<EOF
+[Desktop Entry]
+Name=LABS
+Comment=Pagina de LABS de CE3AA
+Exec=xdg-open https://ce3aa.cl/lab/
+Icon=${BAPDIR}/data/logo.png
+Terminal=false
+Type=Application
+Categories=bap
+Keywords=Support
+
+EOF
+
+	sudo mv labs.desktop /usr/local/share/applications/
+fi
+
 
 if [ ! -f /usr/local/share/applications/73.desktop ]; then
 	cat >73.desktop <<EOF

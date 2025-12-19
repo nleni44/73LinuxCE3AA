@@ -1,5 +1,23 @@
-#73Linux
+# 73Linux
+
 ## Descripción
+
+Este proyecto está siendo desarrollado **por y para los radioaficionados chilenos**, 
+como una iniciativa del **Radio Club de Chile CE3AA**, con el objetivo de facilitar la instalación 
+y uso de software de radioafición en sistemas basados en Debian, adaptándolo a nuestra realidad 
+y necesidades locales.
+
+Queremos **reconocer y agradecer especialmente a KM4ACK**, creador del proyecto original, 
+cuyo trabajo ha sido la base fundamental para este desarrollo. Sin su aporte, este proyecto 
+simplemente no sería posible.
+
+Como radioaficionados chilenos, estamos **orgullosos de este logro**, que busca aportar a 
+la comunidad y hacer más accesibles las herramientas tecnológicas para la radioafición en Chile. 
+Esperamos que este trabajo sea de utilidad y contribuya, aunque sea en parte, a seguir 
+fortaleciendo nuestra actividad y comunidad.
+
+¡73 y buenos DX!
+
 
 73 Linux es la siguiente evolución de Build a Pi. No solo 73 Linux soporta Raspberry Pi,
 sino que también es compatible con sistemas x86_64 basados en Debian. Ahora puedes usar
