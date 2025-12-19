@@ -102,7 +102,7 @@ if [ ! -f /usr/local/share/applications/ce3aa.desktop ]; then
 [Desktop Entry]
 Name=CE3AA
 Comment=Sitio web CE3AA
-Exec=xdg-open https://www.ce3aa.cl
+Exec=chromium https://www.ce3aa.cl
 Icon=${BAPDIR}/data/logo.png
 Terminal=false
 Type=Application
@@ -119,7 +119,7 @@ if [ ! -f /usr/local/share/applications/qrz.desktop ]; then
 [Desktop Entry]
 Name=QRZ CE3AA
 Comment=Pagina QRZ de CE3AA
-Exec=xdg-open https://www.qrz.com/db/CE3AA
+Exec=chromium https://www.qrz.com/db/CE3AA
 Icon=${BAPDIR}/data/logo.png
 Terminal=false
 Type=Application
@@ -137,7 +137,7 @@ if [ ! -f /usr/local/share/applications/subtel.desktop ]; then
 [Desktop Entry]
 Name=Subtel RA
 Comment=Pagina Subtel para Radioaficionados
-Exec=xdg-open https://subtel.gob.cl/RA
+Exec=chromium https://subtel.gob.cl/RA
 Icon=${BAPDIR}/data/logo.png
 Terminal=false
 Type=Application
@@ -155,7 +155,7 @@ if [ ! -f /usr/local/share/applications/facebook.desktop ]; then
 [Desktop Entry]
 Name=Facebook
 Comment=Facebook oficial CE3AA
-Exec=xdg-open https://www.facebook.com/ce3aa.oficial
+Exec=chromium https://www.facebook.com/ce3aa.oficial
 Icon=${BAPDIR}/data/logo.png
 Terminal=false
 Type=Application
@@ -173,7 +173,7 @@ if [ ! -f /usr/local/share/applications/labs.desktop ]; then
 [Desktop Entry]
 Name=LABS
 Comment=Pagina de LABS de CE3AA
-Exec=xdg-open https://ce3aa.cl/lab/
+Exec=chromium https://ce3aa.cl/lab/
 Icon=${BAPDIR}/data/logo.png
 Terminal=false
 Type=Application
