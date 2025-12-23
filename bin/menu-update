@@ -185,6 +185,24 @@ EOF
 	sudo mv labs.desktop /usr/local/share/applications/
 fi
 
+#Simulador de examen
+if [ ! -f /usr/local/share/applications/examen.desktop ]; then
+	cat >examen.desktop <<EOF
+[Desktop Entry]
+Name=Simulador de examen
+Comment=Simulador de examen
+Exec=chromium https://ce3aa.cl/examenes/
+Icon=${BAPDIR}/data/logo.png
+Terminal=false
+Type=Application
+Categories=bap
+Keywords=Support
+
+EOF
+
+	sudo mv examen.desktop /usr/local/share/applications/
+fi
+
 
 if [ ! -f /usr/local/share/applications/73.desktop ]; then
 	cat >73.desktop <<EOF
@@ -231,8 +249,8 @@ cat >bap.directory <<EOF
 [Desktop Entry]
 Type=Directory
 Encoding=UTF-8
-Name=73-Linux
-Icon=${BAPDIR}/data/73.png
+Name=Accesos club
+Icon=${BAPDIR}/data/logo.png
 EOF
 
 sudo mv bap.directory /usr/share/desktop-directories/
@@ -243,6 +261,14 @@ cat >hamradio.menu <<EOF
  "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
 <Menu>
   <Name>Applications</Name>
+
+  <Menu>
+    <Name>Accessos club</Name>
+    <Directory>bap.directory</Directory>
+    <Include>
+      <Category>bap</Category>
+    </Include>
+  </Menu>
   <Menu>
     <Name>Hamradio</Name>
     <Directory>HamRadio.directory</Directory>
@@ -264,14 +290,6 @@ cat >hamradio.menu <<EOF
             </Include>
 
         </Menu>
-	<Menu>
-        <Name>73-Linux</Name>
-        <Directory>bap.directory</Directory>
-        <Include>
-            <Category>bap</Category>
-        </Include>
-
-    </Menu>
   </Menu> <!-- End hamradio -->
 </Menu>
 EOF
